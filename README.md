@@ -1,70 +1,112 @@
-# Learn Jenkins App
+# Jenkins CI/CD pipeline that builds, tests and deploys a React application to Netlify using Docker.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository demonstrates a **CI/CD pipeline built with Jenkins** that builds, tests, and deploys a **Node.js / React web application** to Netlify.
 
-## Available Scripts
+The pipeline is defined using **Pipeline as Code (Jenkinsfile)** and runs inside a **Docker build environment**. Jenkins automates the process of installing dependencies, running tests, building the application, and deploying it to production.
 
-In the project directory, you can run:
+The pipeline is currently **triggered manually from Jenkins**, after which all build, test, and deployment steps run automatically.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Pipeline Workflow
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Developer pushes code to GitHub  
+↓  
+Manual trigger from Jenkins  
+↓  
+Install dependencies (`npm ci`)  
+↓  
+Run automated tests (`npm test`)  
+↓  
+Generate JUnit test reports  
+↓  
+Build production application (`npm run build`)  
+↓  
+Deploy to Netlify using Netlify CLI  
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
 
-### `npm run build`
+- Jenkins
+- Docker
+- GitHub
+- Node.js
+- React
+- Netlify CLI
+- CI/CD pipelines
+- JUnit test reporting
+- Linux shell commands
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## DevOps Concepts Demonstrated
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This project demonstrates several core DevOps practices:
 
-### `npm run eject`
+- **Continuous Integration (CI)**  
+  Automatically building and testing the application.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Continuous Deployment (CD)**  
+  Deploying the built application to a production hosting platform.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Pipeline as Code**  
+  Using a Jenkinsfile stored in the repository to define the pipeline.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Automated Testing**  
+  Running tests as part of the CI/CD process.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Build Automation**  
+  Automatically compiling and preparing the production build.
 
-## Learn More
+- **Deployment Automation**  
+  Deploying the build to Netlify using the Netlify CLI.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Secrets Management**  
+  Using Jenkins credentials to manage the Netlify API token securely.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## Repository Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Key files in this project:
 
-### Analyzing the Bundle Size
+- **Jenkinsfile**  
+  Defines the CI/CD pipeline stages.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **package.json**  
+  Node.js project configuration and scripts.
 
-### Making a Progressive Web App
+- **src/**  
+  Source code of the React application.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **public/**  
+  Static assets used by the application.
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Attribution / Learning Source
 
-### Deployment
+This project is based on the **Learn Jenkins App** created by **Valentin Despa**.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Original repository:  
+https://github.com/vdespa/learn-jenkins-app
 
-### `npm run build` fails to minify
+The CI/CD pipeline implementation was developed while following the tutorial:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Introduction to Jenkins, CI/CD, and DevOps (2025)**  
+by Valentin Despa.
+
+The purpose of this repository is to practice **Jenkins pipelines, CI/CD workflows, and automated deployments**.
+
+---
+
+## Future Improvements
+
+Potential improvements to extend this project:
+
+- Configure **GitHub webhooks** to automatically trigger Jenkins pipelines
+- Containerise the application using **Docker**
+- Deploy the application to **AWS or Azure**
+- Implement **Infrastructure as Code** using Terraform
+- Add **monitoring and logging** for deployments
